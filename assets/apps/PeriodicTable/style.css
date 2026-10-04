@@ -1,0 +1,149 @@
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 1.4.0      |
+  |  © 2021-2024 By PusyuuWanko/  |
+  |  LastUpdate: 2023-11-04       |
+  |  License: MIT License         |
+  |  PeriodicTable                |
+----------------------------------*
+******************************************/
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-image: url("./sys_wallpaper/1.png");
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
+table {
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #fff;
+  border-collapse: collapse;
+  margin: 0px;
+  color: #fff;
+  width: 1350px;
+  height: auto;
+  table-layout: fixed;
+}
+td {
+  border: 1px solid #fff;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(155,155,155,0.5));
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.settings_button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(10,255,10,0.7);
+  border-radius: 50px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.modal {
+  display: none;
+  z-index: 666;
+}
+.modal:target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal_wrapper {
+  position: fixed;
+  /*margin-left: 250px;*/
+  animation: m-show 0.3s linear 0s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+@keyframes m-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal .modal_content-wrapper {
+  position: relative;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: default;
+  border: 1px solid #000;
+}
+.modal .modal_header {
+  background-color: rgba(255,255,255,0.5);
+  padding: 10px;
+  font-size: 20px;
+  height: auto;
+  width: 60vw;
+}
+.modal .modal_border {
+  border-bottom: 1px solid #000;
+}
+.modal .modal_message-box {
+  padding: 10px;
+  overflow: auto;
+  height: 50vh;
+  width: 60vw;
+  background-color: rgba(255,255,255,0.5);
+}
+.modal .modal_close {
+  position: relative;
+  display: block;
+}
+.modal .modal_close::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.modal .modal_close::after {
+  content: "✕";
+  color: white;
+  position: absolute;
+  right: -13px;
+  top: -13px;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* sm tb 用
+-----------------------------------------------------------------*/
+
+@media screen and (max-width: 950px) {
+  .settings_button {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,59 @@
+[
+    {
+        "image": "./assets/images/img-26.png",
+        "title": "プシューメモ",
+        "id": "modal-17",
+        "description": "簡単にメモを作成・保存できます。保存したメモは端末のローカルストレージに保存されます。",
+        "src": "/",
+        "pinned": false,
+        "legacyCompatible": false,
+        "registry": "p-memo"
+    },
+    {
+        "image": "./assets/images/kamibukuro.png",
+        "title": "アプリストア",
+        "id": "modal-18",
+        "description": "アプリの一覧からインストール・アンインストールができます。",
+        "src": "./assets/apps/AppStore/index.html",
+        "pinned": true,
+        "legacyCompatible": false
+    },
+    {
+        "image": "./assets/images/img-28.png",
+        "title": "設定",
+        "id": "app-settings",
+        "description": "このツールボックスの設定ができます。",
+        "src": "./?settings",
+        "pinned": false,
+        "legacyCompatible": false
+    },
+    {
+        "id": "extlink-pusyuuips-d3d265",
+        "title": "PusyuuIPS",
+        "description": "プシューサービスにあるPusyuuIPSです、この機能ではSNSの様な投稿が可能です",
+        "image": "/assets/images/pips_logo.png",
+        "src": "/",
+        "pinned": false,
+        "legacyCompatible": true,
+        "registry": "pips"
+    },
+    {
+        "id": "extlink-app-2c157c",
+        "title": "このファイルは５秒後に消滅する",
+        "description": "あの例の映画の様なファイル共有サービスです",
+        "image": "./assets/images/computer_cloud_storage.png",
+        "src": "/",
+        "pinned": false,
+        "legacyCompatible": false,
+        "registry": "p-5second"
+    },
+    {
+        "id": "extlink-pc-d334fe",
+        "title": "PC",
+        "description": "SF-OS",
+        "image": "./assets/images/img-1.png",
+        "src": "https://sf-os.work/sfos/",
+        "pinned": false,
+        "legacyCompatible": false
+    }
+]

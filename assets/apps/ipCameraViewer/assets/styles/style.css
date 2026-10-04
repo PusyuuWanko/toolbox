@@ -1,0 +1,62 @@
+/* IE9+ 想定。flexbox / grid は使わず float で組む。装飾は最小限。 */
+html, body { margin:0; padding:0; background:#0e0f12; color:#d7dbe0;
+              font-family:"Meiryo","MS PGothic",sans-serif; font-size:13px; }
+#bar { background:#171a20; border-bottom:1px solid #2a2f38; padding:7px 10px; }
+#bar button, #bar input { font-size:13px; vertical-align:middle; }
+#bar button { background:#242a33; color:#dfe4ea; border:1px solid #384150;
+              padding:4px 10px; margin-right:6px; cursor:pointer; }
+#bar button:hover { background:#2d343f; }
+#bar input[type=number] { width:46px; background:#0d0f13; color:#dfe4ea;
+              border:1px solid #384150; padding:3px; }
+#clock { float:right; color:#7f8794; padding-top:4px; }
+
+.companionBanner { background:#1c2e3d; border-bottom:1px solid #2a4a63;
+            padding:8px 10px; color:#bfe0ff; }
+.companionBanner a { color:#8fc7ff; margin-right:10px; }
+.companionBanner button { background:#242a33; color:#dfe4ea; border:1px solid #384150;
+            padding:3px 8px; margin-left:6px; cursor:pointer; }
+.companionBanner button:hover { background:#2d343f; }
+
+#panel,
+#readme { display:none; background:#12151b; border-bottom:1px solid #2a2f38; padding:10px; }
+#panel .row { margin-bottom:8px; }
+#panel .hint { color:#7f8794; margin-left:8px; }
+#cfgText { width:100%; height:150px; box-sizing:border-box; background:#0a0c10;
+            color:#bfe0ff; border:1px solid #2a2f38; font-family:Consolas,monospace;
+            font-size:12px; padding:6px; }
+#panel button { background:#242a33; color:#dfe4ea; border:1px solid #384150;
+            padding:4px 10px; cursor:pointer; }
+
+#grid { padding:3px; }
+#grid:after { content:""; display:block; clear:both; }
+.cell { float:left; box-sizing:border-box; padding:3px; }
+.frame { position:relative; background:#000; border:1px solid #2a2f38; overflow:hidden; }
+.frame img,
+.frame video { display:block; width:100%; height:auto; background:#000; }
+.label { position:absolute; left:0; top:0; background:rgba(0,0,0,0.6);
+          padding:2px 7px; font-size:12px; color:#eef1f5; }
+.status { position:absolute; right:0; top:0; background:rgba(0,0,0,0.6);
+          padding:2px 7px; font-size:11px; }
+.status.ok   { color:#8ee6a0; }
+.status.ng   { color:#f28c8c; }
+.status.wait { color:#f2d08c; }
+.ts { position:absolute; left:0; bottom:0; background:rgba(0,0,0,0.6);
+      padding:1px 7px; font-size:11px; color:#8fb8ff; }
+
+#soundPanel { display:none; background:#12151b; border-bottom:1px solid #2a2f38; padding:10px; }
+#soundPanel .row { margin-bottom:8px; }
+#soundUsage { color:#9fd3ff; margin-bottom:8px; }
+.soundRow { padding:4px 0; border-bottom:1px solid #232833; }
+.soundRow .soundName { display:inline-block; min-width:220px; color:#dfe4ea; }
+.soundRow button { background:#242a33; color:#dfe4ea; border:1px solid #384150;
+            padding:3px 8px; margin-left:6px; cursor:pointer; }
+.soundRow button:hover { background:#2d343f; }
+
+.motionCtrl { padding:4px 3px; font-size:11px; color:#c3c9d1; }
+.motionCtrl label { margin-right:6px; cursor:pointer; }
+.motionCtrl select { max-width:90px; font-size:11px; margin-right:4px;
+            background:#0d0f13; color:#dfe4ea; border:1px solid #384150; }
+.motionCtrl .motionThresh { width:42px; font-size:11px;
+            background:#0d0f13; color:#dfe4ea; border:1px solid #384150; }
+.motionCtrl .motionVol { width:70px; margin-left:4px; vertical-align:middle; }
+.motionStatus { margin-left:6px; color:#f28c8c; font-weight:bold; }

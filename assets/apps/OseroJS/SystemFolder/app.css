@@ -1,0 +1,160 @@
+body {
+  padding: 10px;
+  margin: 0;
+  background-color:#00ffff
+}
+
+#main {
+
+}
+
+.container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 3px;
+}
+
+#black-player-type {
+  width: 45%;
+  padding: 3px;
+}
+#white-player-type {
+  width: 45%;
+  padding: 3px;
+}
+#select {
+  display: flex;
+}
+
+input {
+  padding: 3px;
+}
+
+button {
+  padding: 5px;
+  background: #00d5ff;
+  border-radius: 3px;
+  border-width: 0;
+  toransition: background 0.5s;
+}
+button:hover {
+  background: #0088cc;
+}
+
+#game-board > table {
+  background-color: #80bfff;
+  border-radius: 5px;
+  padding: 10px;
+}
+#game-board > table th {
+
+}
+#game-board > table .cell {
+  background: #090;
+  //border: 1px solid #ccc;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+#game-board > table .cell.attackable {
+  cursor: pointer;
+}
+#game-board > table .cell.attackable:hover {
+  background: #cc0;
+}
+#game-board > table .cell > .disc {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 1em;
+  margin: 10px;
+}
+#game-board > table .cell.white > .disc {
+  background: #fff;
+}
+#game-board > table .cell.black > .disc {
+  background: #000;
+}
+#game-board > table .cell.attackable > .disc {
+  opacity: 0.2;
+}
+#game-board > table .cell.attackable:hover > .disc {
+  opacity: 1.0;
+}
+
+@media only screen and (max-width:600px){
+
+#game-board > table {
+
+}
+#game-board > table th {
+
+}
+#game-board > table .cell {
+
+}
+#game-board > table .cell.attackable {
+
+}
+#game-board > table .cell.attackable:hover {
+
+}
+#game-board > table .cell > .disc {
+  width: 15px;
+  height: 15px;
+  border-radius: 1em;
+  margin: 4px;
+}
+#game-board > table .cell.white > .disc {
+
+}
+#game-board > table .cell.black > .disc {
+
+}
+#game-board > table .cell.attackable > .disc {
+
+}
+#game-board > table .cell.attackable:hover > .disc {
+
+}
+
+}
+
+@media only screen and (max-width:300px){
+
+#game-board > table {
+
+}
+#game-board > table th {
+
+}
+#game-board > table .cell {
+
+}
+#game-board > table .cell.attackable {
+
+}
+#game-board > table .cell.attackable:hover {
+
+}
+#game-board > table .cell > .disc {
+  width: 10px;
+  height: 10px;
+  border-radius: 1em;
+  padding: 1px;
+}
+#game-board > table .cell.white > .disc {
+
+}
+#game-board > table .cell.black > .disc {
+
+}
+#game-board > table .cell.attackable > .disc {
+
+}
+#game-board > table .cell.attackable:hover > .disc {
+
+}
+
+}

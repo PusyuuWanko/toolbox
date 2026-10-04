@@ -1,0 +1,115 @@
+body {
+  background: rgba(100,100,100,0.8);
+}
+body > div {
+  padding: 10px;
+}
+a {
+  color: #fff000;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.account_status {
+  background: rgba(255,255,255,0.08);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.account_status .note {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.account_login_button {
+  display: inline-block;
+  background: #00cccc;
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 13px;
+}
+.account_login_button:hover {
+  background: #00aacc;
+  text-decoration: none;
+}
+
+.sync_settings {
+  background: rgba(255,255,255,0.08);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.sync_settings .note {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.sync_settings h4 {
+  margin: 6px 0 2px;
+}
+.sync_manual_actions {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px 0;
+  gap: 8px;
+}
+.sync_manual_actions .account_login_button {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  margin: 2.3px;
+}
+.sync_manual_actions .account_login_button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.storage_settings {
+  background: rgba(255,255,255,0.08);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.storage_settings .note {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.storage_app {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 0;
+}
+.storage_app h4 {
+  margin: 4px 0;
+}
+.storage_mode_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+}
+.storage_mode_option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.storage_item_list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+}
+.storage_item_list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+}
+.storage_settings .account_login_button {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+}

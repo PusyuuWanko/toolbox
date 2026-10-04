@@ -1,0 +1,7 @@
+{
+  "title": "ミュージックステーション",
+  "description": "ラジオミュージックステーションを聞くことができます。",
+  "image": "./assets/images/img-17.png",
+  "entry": "music-player.html",
+  "legacyCompatible": false
+}

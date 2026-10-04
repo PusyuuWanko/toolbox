@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name='robots' content='noindex,nofollow'>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=6.0, minimum-scale=1.0">
+    <meta name="copyright" content="© 2020-2024 created by PusyuuWanko/">
+    <title>カラーコードマッチャー</title>
+    <link rel="stylesheet" href="style.css">
+        <!--
+        *------------------------------------
+        |  ThisPageVersion: 2.3.0         |
+        |  © 2021-2024 By PusyuuWanko/    |
+        |  LastUpdate: 2023-11-18         |
+        |  License: MIT License           |
+        |  ColorCodeMatcher               |
+      ------------------------------------*
+    -->
+  </head>
+  <body>
+    <main class="main">
+      <div class="main_yohaku">
+        <section>
+          <div style="">
+            <div id="videoContainer">
+              <video id="video" muted autoplay></video>
+              <div id="detectionFrame"></div>
+              <canvas id="canvas" style="display: none;"></canvas>
+            </div>
+          </div>
+          <div class="center menu-list">
+            <button id="switchCameraButton">Switch Camera</button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div id="colorCode"></div>
+      <ul id="colorList"></ul>
+      <select id="sensitivity" name="sensitivity">
+        <option value="1">Low</option>
+        <option value="5" selected>Medium</option>
+        <option value="10">High</option>
+      </select>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

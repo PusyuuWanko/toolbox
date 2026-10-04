@@ -1,0 +1,6 @@
+{
+  "title": "天気予報",
+  "description": "ここでは、自動的に現在地の天気を取得し表示できます。",
+  "image": "./assets/images/img-24.png",
+  "legacyCompatible": false
+}

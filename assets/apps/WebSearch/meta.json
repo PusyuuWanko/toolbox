@@ -1,0 +1,6 @@
+{
+  "title": "ウェブ検索",
+  "description": "キーワードを入力してウェブ検索ができます（非公式なスクレイピングによる検索結果表示です）。",
+  "image": "./assets/images/img-32.png",
+  "legacyCompatible": false
+}

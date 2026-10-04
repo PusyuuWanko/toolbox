@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=6.0, minimum-scale=1.0">
+    <meta name="copyright" content="© 2020-2026 created by PusyuuWanko/">
+    <meta name='robots' content='noindex,nofollow'>
+    <title>プシューGPS速度計</title>
+    <link href="./style.css" rel="stylesheet">
+    <script src="./script.js" defer></script>
+    <!--
+        *----------------------------------
+        |  ThisPageVersion: 1.0.0       |
+        |  © 2026 By PusyuuWanko/       |
+        |  License: MIT License         |
+        |  PusyuuGpsSpeedometer         |
+      ----------------------------------*
+    -->
+  </head>
+  <body>
+    <div id="speedo-container">
+      <p id="speedo-status">位置情報の利用準備をしています...</p>
+      <div id="gauge">
+        <div id="gauge-fill"></div>
+        <div id="gauge-inner">
+          <div id="speed-value">0.0</div>
+          <div id="speed-unit">km/h</div>
+        </div>
+      </div>
+      <div id="stats">
+        <div class="stat"><span class="stat-label">最高速度</span><span id="max-speed" class="stat-value">0.0 km/h</span></div>
+        <div class="stat"><span class="stat-label">平均速度</span><span id="avg-speed" class="stat-value">0.0 km/h</span></div>
+        <div class="stat"><span class="stat-label">mph換算</span><span id="mph-speed" class="stat-value">0.0 mph</span></div>
+        <div class="stat"><span class="stat-label">位置精度</span><span id="accuracy" class="stat-value">- m</span></div>
+      </div>
+    </div>
+    <div id="controls">
+      <button id="start-btn" type="button">▶ 開始</button>
+      <button id="stop-btn" type="button" style="display:none;">■ 停止</button>
+      <button id="reset-btn" type="button">↺ リセット</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "title": "メールクライアント",
+  "description": "IMAP／SMTPサーバーに接続してメールの送受信ができます。パスワードはブラウザに保存されません。",
+  "image": "./assets/images/img-16.png",
+  "legacyCompatible": false
+}

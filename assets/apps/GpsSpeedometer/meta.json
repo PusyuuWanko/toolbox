@@ -1,0 +1,7 @@
+{
+    "title": "GPS速度計",
+    "description": "GPSを利用して現在の移動速度や最高速度を計測できます。",
+    "image": "./assets/images/car_tachograph_analog.png",
+    "pinned": false,
+    "legacyCompatible": false
+}

@@ -1,0 +1,6 @@
+{
+  "title": "カメラ",
+  "description": "端末のカメラで写真を撮影・保存できます。",
+  "image": "./assets/images/img-2.png",
+  "legacyCompatible": false
+}

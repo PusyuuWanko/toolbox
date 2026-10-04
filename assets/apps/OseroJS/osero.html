@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name='robots' content='noindex,nofollow'>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=6.0, minimum-scale=1.0">
+    <title>オセロ!!</title>
+    <link href="SystemFolder/app.css" rel="stylesheet">
+  </head>   
+    <body>
+      <h2>オセロたのしんでね‼</h2>
+      <div id="main">
+      <div id="game-board" class="container"></div>
+      <div id="current-player" class="container">Current player: <span id="current-player-name">-</span></div>
+      <div id="message" class="container"></div>
+      <div id="console" class="container"></div>
+      <div id="stats" class="container"></div>
+        <div id="preference-pane">
+          <div id="select" class="container"><label>Black: </label>
+            <select id="black-player-type">
+              <option value="human" selected>Human</option>
+              <option value="simpleCount-131072">AI (Type A; try to get many disks)</option>
+              <option value="basic-131072">AI (Type B; try to own corner positions)</option>
+              <option value="better-131072">AI (Type C; try to own corner positions carefully)</option>
+              <option value="moveCount-131072">AI (Type D; Prioritize number of moves)</option>
+              <option value="moveCountAndPositions-131072">AI (Type E; Prioritize number of moves and positions)</option>
+              <option value="mcts-128">AI (Type M-128; Monte Carlo Tree Search with 128 iterations)</option>
+              <option value="mcts-256">AI (Type M-256; Monte Carlo Tree Search with 256 iterations)</option>
+              <option value="mcts-512">AI (Type M-512; Monte Carlo Tree Search with 512 iterations)</option>
+              <option value="mcts-1024">AI (Type M-1024; Monte Carlo Tree Search with 1024 iterations)</option>
+              <option value="mcts-2048">AI (Type M-2048; Monte Carlo Tree Search with 2048 iterations)</option>
+              <option value="mcts-4096">AI (Type M-4096; Monte Carlo Tree Search with 4096 iterations)</option>
+              <option value="mcts-1024-old">AI (Type M-1024/old; Monte Carlo Tree Search with 1024 iterations)</option>
+              <option value="pmc-100-m">AI (Type PM-100/m; Primitive Monte Carlo with 100 iterations for each move)</option>
+              <option value="pmc-200-m">AI (Type PM-200/m; Primitive Monte Carlo with 200 iterations for each move)</option>
+              <option value="pmc-1024-e">AI (Type PM-1024/e; Primitive Monte Carlo with 1024 iterations divided for each move)</option>
+            </select>
+          </div>
+          <div  class="container">
+          <button id="swap-player-types-button" class="btn" type="button">⇅</button>
+          </div>
+          <div id="select" class="container"><label>White: </label>
+            <select id="white-player-type">
+              <option value="human">Human</option>
+              <option value="simpleCount-131072">AI (Type A; try to get many disks)</option>
+              <option value="basic-131072">AI (Type B; try to own corner positions)</option>
+              <option value="better-131072" selected>AI (Type C; try to own corner positions carefully)</option>
+              <option value="moveCount-131072">AI (Type D; Prioritize number of moves)</option>
+              <option value="moveCountAndPositions-131072">AI (Type E; Prioritize number of moves and positions)</option>
+              <option value="mcts-128">AI (Type M-128; Monte Carlo Tree Search with 128 iterations)</option>
+              <option value="mcts-256">AI (Type M-256; Monte Carlo Tree Search with 256 iterations)</option>
+              <option value="mcts-512">AI (Type M-512; Monte Carlo Tree Search with 512 iterations)</option>
+              <option value="mcts-1024">AI (Type M-1024; Monte Carlo Tree Search with 1024 iterations)</option>
+              <option value="mcts-2048">AI (Type M-2048; Monte Carlo Tree Search with 2048 iterations)</option>
+              <option value="mcts-4096">AI (Type M-4096; Monte Carlo Tree Search with 4096 iterations)</option>
+              <option value="mcts-1024-old">AI (Type M-1024/old; Monte Carlo Tree Search with 1024 iterations)</option>
+              <option value="pmc-100-m">AI (Type PM-100/m; Primitive Monte Carlo with 100 iterations for each move)</option>
+              <option value="pmc-200-m">AI (Type PM-200/m; Primitive Monte Carlo with 200 iterations for each move)</option>
+              <option value="pmc-1024-e">AI (Type PM-1024/e; Primitive Monte Carlo with 1024 iterations divided for each move)</option>
+            </select>
+          </div>
+          <div class="container">
+            <input id="new-ai-url" type="text" value="http://kana.github.io/othello-js/random-ai.js">
+            <button id="add-new-ai-button" class="btn" type="button">Add new AI</button>
+          </div>
+          <div class="container">
+            <input id="repeat-games" type="checkbox">
+            <label>Repeat games</label>
+          </div>
+          <div class="container">
+            <button id="start-button" class="btn btn-primary" type="submit">Start a new game</button>
+          </div>
+        </div>
+      </main>
+    <script src="SystemFolder/vendor/jquery/jquery-1.9.1.min.js"></script>
+    <script src="SystemFolder/othello.js"></script>
+    <script src="SystemFolder/app.js"></script>
+  </body>  
+</html>

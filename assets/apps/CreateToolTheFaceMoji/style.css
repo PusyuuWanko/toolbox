@@ -1,0 +1,54 @@
+/*****************************************
+  *----------------------------------
+  |  ThisCssVersion: 1.2.1        |
+  |  © 2021-2024 By PusyuuWanko/  |
+  |  LastUpdate: 2023-11-29       |
+  |  License: MIT License         |
+  |  (^U^)KaomjiJsDesu            |
+----------------------------------*
+******************************************/
+
+@import url("./PusyuuStyleSheet20.2.1.css");
+
+.sakusei {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  background-color: #00ff00;
+  border-radius: 50px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.box-6 {
+  width: 80vw;
+  height: auto;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.main,
+.modal .modal_wrapper {
+  margin-left: 0;
+}
+
+#faceContainer {
+  width: 97%;
+  height: 350px;
+  overflow: scroll;
+  font-size: 35px;
+}
+
+@media screen and (max-width:650px) {
+  .sakusei {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}

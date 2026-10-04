@@ -1,0 +1,506 @@
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 1.0.2      |
+  |  © 2026 By PusyuuWanko/       |
+  |  License: MIT License         |
+  |  PusyuuWebMail                |
+----------------------------------*
+******************************************/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #000;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #80ff00;
+  text-align: center;
+}
+
+.notice {
+  max-width: 600px;
+  margin: 0 auto 15px;
+  font-size: 13px;
+  color: #ffcc66;
+  background: rgba(255, 204, 102, 0.1);
+  border: 1px solid rgba(255, 204, 102, 0.4);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.preset-row {
+  max-width: 600px;
+  margin: 0 auto 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.preset-btn {
+  background: rgba(0, 200, 255, 0.2);
+  color: #9fe6ff;
+  border: 1px solid rgba(0, 200, 255, 0.5);
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  margin: 0 5px 0;
+}
+
+#login-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+fieldset {
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+legend {
+  color: #66ccff;
+  padding: 0 5px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+input,
+select,
+textarea {
+  background-color: #111;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#login-submit,
+#send-btn,
+#compose-btn,
+#refresh-btn {
+  background-color: rgba(10, 255, 10, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  margin: 0 5px 0;
+  font-size: 15px;
+}
+
+#logout-btn,
+#cancel-compose-btn,
+#back-btn {
+  background-color: rgba(255, 80, 80, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 15px;
+}
+
+#reply-btn {
+  background-color: rgba(0, 200, 255, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#login-status,
+#inbox-status,
+#compose-status {
+  min-height: 20px;
+  color: #0f0;
+  text-align: center;
+  font-size: 13px;
+}
+
+#inbox-header {
+  max-width: 900px;
+  margin: 0 auto 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#account-label {
+  color: #80ff00;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#autosync-controls {
+  max-width: 900px;
+  margin: 0 auto 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: #9fe6ff;
+}
+
+#autosync-controls input[type="number"] {
+  width: 5em;
+  padding: 4px 6px;
+}
+
+#autosync-lastcheck {
+  color: #777;
+}
+
+#inbox-body {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+#folder-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 140px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.folder-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.folder-item:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.folder-item.active {
+  background: rgba(10, 255, 10, 0.2);
+  color: #80ff00;
+  font-weight: bold;
+}
+
+#inbox-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  #inbox-body {
+    flex-direction: column;
+  }
+  #folder-list {
+    max-width: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+#message-list {
+  max-width: 700px;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 5px 0 5px;
+}
+
+.message-item:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.message-item.unread .message-subject {
+  font-weight: bold;
+  color: #80ff00;
+}
+
+.message-from {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.message-subject {
+  font-size: 15px;
+  color: #fff;
+}
+
+.message-date {
+  font-size: 11px;
+  color: #777;
+}
+
+#message-screen {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#message-detail {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#message-detail .detail-subject {
+  font-size: 20px;
+  color: #80ff00;
+  margin: 0 0 8px;
+}
+
+#message-detail .detail-meta {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+#message-detail .detail-body {
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}
+
+#attachment-list {
+  max-width: 700px;
+  margin: 0 auto 10px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.attachment-item button {
+  background-color: rgba(0, 200, 255, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 16px;
+  padding: 5px 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.message-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#toggle-seen-btn {
+  background-color: rgba(255, 204, 102, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#delete-btn {
+  background-color: rgba(255, 80, 80, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* ページャ */
+#pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+#pager button {
+  padding: 6px 14px;
+  cursor: pointer;
+}
+#pager button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+#pager-info {
+  min-width: 8em;
+  text-align: center;
+}
+
+#compose-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#compose-box {
+  background: #111;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#compose-box h2 {
+  margin: 0 0 5px;
+  color: #66ccff;
+}
+
+#compose-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+#compose-toolbar button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 13px;
+}
+
+#compose-color {
+  width: 34px;
+  height: 30px;
+  padding: 2px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #111;
+}
+
+#compose-body {
+  min-height: 160px;
+  max-height: 320px;
+  overflow-y: auto;
+  background-color: #111;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+#compose-body:empty:before {
+  content: "本文を入力...";
+  color: #666;
+}
+
+#compose-attachment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+#compose-attachment-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+#compose-attachment-list button {
+  background-color: rgba(255, 80, 80, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  font-size: 12px;
+}
+
+.compose-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

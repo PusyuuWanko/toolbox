@@ -1,0 +1,101 @@
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 1.0.0      |
+  |  © 2026 By PusyuuWanko/       |
+  |  License: MIT License         |
+  |  PusyuuAppStore               |
+----------------------------------*
+******************************************/
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #000;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #80ff00;
+  text-align: center;
+  margin-top: 0;
+}
+
+#store-status {
+  text-align: center;
+  color: #0f0;
+}
+
+#app-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.store-card {
+  display: block;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.store-icon {
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+  border-radius: 8px;
+}
+
+.store-info {
+  overflow: hidden;
+}
+
+.store-title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.store-description {
+  margin: 0;
+  font-size: 13px;
+  color: #bbb;
+}
+
+.store-warning {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #ffcc66;
+}
+
+.store-action {
+  clear: both;
+  padding-top: 10px;
+  text-align: right;
+}
+
+.store-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.store-btn-install {
+  background-color: rgba(10, 255, 10, 0.7);
+  color: #000;
+}
+
+.store-btn-uninstall {
+  background-color: rgba(255, 80, 80, 0.7);
+  color: #000;
+}
+
+.store-btn[disabled] {
+  background-color: rgba(150, 150, 150, 0.4);
+  color: #ccc;
+  cursor: default;
+}

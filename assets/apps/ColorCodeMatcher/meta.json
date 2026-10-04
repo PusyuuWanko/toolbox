@@ -1,0 +1,6 @@
+{
+  "title": "カラーコードマッチャーベータ版",
+  "description": "検出した色を選択して、かざしてマッチさせたりできます。",
+  "image": "./assets/images/img-0.png",
+  "legacyCompatible": false
+}

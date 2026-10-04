@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=6.0, minimum-scale=1.0">
+    <meta name="copyright" content="© 2020-2026 created by PusyuuWanko/">
+    <meta name='robots' content='noindex,nofollow'>
+    <title>プシューメール</title>
+    <link href="./assets/styles/style.css" rel="stylesheet">
+    <!-- ツールボックスの保存の窓口。script.js より先に読み込むこと(無い場所では script.js が localStorage に倒れます) -->
+    <script src="../../scripts/storage-hub.js"></script>
+    <script src="./assets/scripts/script.js" defer></script>
+    <!--
+        *----------------------------------
+        |  ThisPageVersion: 1.0.1       |
+        |  © 2026 By PusyuuWanko/       |
+        |  License: MIT License         |
+        |  PusyuuWebMail                |
+      ----------------------------------*
+    -->
+  </head>
+  <body>
+
+    <!-- ログイン画面 -->
+    <section id="login-screen">
+      <h1>プシューメール</h1>
+      <p class="notice">
+        パスワードはこのブラウザのタブを閉じるまでの間だけ保持され、サーバーにもこの端末にも保存されません(保存できるのはサーバーやユーザー名などの設定だけです)。
+        信頼できる端末・回線でのみご利用ください。Gmail等2段階認証を使っている場合は「アプリパスワード」が必要です。
+      </p>
+
+      <div class="preset-row">
+        <span>かんたん設定:</span>
+        <button type="button" class="preset-btn" data-preset="gmail">Gmail</button>
+        <button type="button" class="preset-btn" data-preset="outlook">Outlook / Microsoft365</button>
+        <button type="button" class="preset-btn" data-preset="yahoo">Yahoo Mail</button>
+        <button type="button" class="preset-btn" data-preset="disroot">Disroot</button>
+      </div>
+
+      <form id="login-form">
+        <fieldset>
+          <legend>受信 (IMAP)</legend>
+          <label>ホスト <input type="text" id="imap-host" required placeholder="imap.example.com"></label>
+          <label>ポート <input type="number" id="imap-port" required value="993"></label>
+          <label>暗号化
+            <select id="imap-encryption">
+              <option value="ssl">SSL/TLS</option>
+              <option value="starttls">STARTTLS</option>
+              <option value="none">なし</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>送信 (SMTP)</legend>
+          <label>ホスト <input type="text" id="smtp-host" required placeholder="smtp.example.com"></label>
+          <label>ポート <input type="number" id="smtp-port" required value="587"></label>
+          <label>暗号化
+            <select id="smtp-encryption">
+              <option value="starttls">STARTTLS</option>
+              <option value="ssl">SSL/TLS</option>
+              <option value="none">なし</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>アカウント</legend>
+          <label>ユーザー名（メールアドレス） <input type="text" id="mail-username" required></label>
+          <label>パスワード <input type="password" id="mail-password" required></label>
+        </fieldset>
+
+        <div id="login-status"></div>
+        <button type="submit" id="login-submit">ログイン</button>
+      </form>
+    </section>
+
+    <!-- 受信箱画面 -->
+    <section id="inbox-screen" style="display:none;">
+      <header id="inbox-header">
+        <span id="account-label"></span>
+        <div class="header-buttons">
+          <button type="button" id="compose-btn">✏️ 新規作成</button>
+          <button type="button" id="refresh-btn">🔄 更新</button>
+          <button type="button" id="logout-btn">🚪 ログアウト</button>
+        </div>
+      </header>
+
+      <div id="autosync-controls">
+        <label><input type="checkbox" id="autosync-toggle" checked> 自動更新</label>
+        <label>間隔(秒) <input type="number" id="autosync-interval" min="15" max="3600" step="5" value="60"></label>
+        <span id="autosync-lastcheck"></span>
+      </div>
+
+      <div id="inbox-body">
+        <ul id="folder-list"></ul>
+        <div id="inbox-main">
+          <div id="inbox-status"></div>
+          <ul id="message-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- メッセージ詳細画面 -->
+    <section id="message-screen" style="display:none;">
+      <button type="button" id="back-btn">← 戻る</button>
+      <div id="message-detail"></div>
+      <ul id="attachment-list"></ul>
+      <div class="message-actions">
+        <button type="button" id="reply-btn">↩ 返信</button>
+        <button type="button" id="toggle-seen-btn">未読にする</button>
+        <button type="button" id="delete-btn">🗑 削除</button>
+      </div>
+    </section>
+
+    <!-- 作成モーダル -->
+    <div id="compose-modal" style="display:none;">
+      <div id="compose-box">
+        <h2>新規メール作成</h2>
+        <label>宛先 <input type="email" id="compose-to" required></label>
+        <label>件名 <input type="text" id="compose-subject"></label>
+
+        <div id="compose-toolbar">
+          <button type="button" data-cmd="bold"><b>B</b></button>
+          <button type="button" data-cmd="italic"><i>I</i></button>
+          <button type="button" data-cmd="underline"><u>U</u></button>
+          <button type="button" data-cmd="insertUnorderedList">•リスト</button>
+          <input type="color" id="compose-color" title="文字色" value="#000000">
+          <button type="button" id="compose-link-btn">🔗リンク</button>
+          <button type="button" id="compose-clear-format-btn">✕書式解除</button>
+        </div>
+        <div id="compose-body" contenteditable="true"></div>
+        <textarea id="compose-body-fallback" rows="10" style="display:none;"></textarea>
+
+        <label>添付ファイル <input type="file" id="compose-attachment-input" multiple></label>
+        <ul id="compose-attachment-list"></ul>
+
+        <div id="compose-status"></div>
+        <div class="compose-buttons">
+          <button type="button" id="send-btn">送信</button>
+          <button type="button" id="cancel-compose-btn">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

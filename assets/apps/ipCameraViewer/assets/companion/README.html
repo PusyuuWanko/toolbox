@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ipcam-companion について</title>
+<style>
+  body { margin:0; padding:0; background:#0e0f12; color:#d7dbe0;
+         font-family:"Meiryo","MS PGothic",sans-serif; line-height:1.7; }
+  .wrap { max-width:760px; margin:0 auto; padding:24px 20px 60px; }
+  h1 { font-size:20px; color:#eef1f5; border-bottom:1px solid #2a2f38; padding-bottom:10px; }
+  h2 { font-size:16px; color:#eef1f5; margin-top:32px; }
+  p { margin:10px 0; }
+  code, pre { font-family:Consolas,monospace; background:#12151b; color:#bfe0ff;
+              border:1px solid #2a2f38; }
+  code { padding:1px 5px; border-radius:3px; }
+  pre { padding:10px; overflow-x:auto; border-radius:4px; }
+  ul, ol { padding-left:22px; }
+  li { margin:6px 0; }
+  .note { background:#1c2e3d; border:1px solid #2a4a63; color:#bfe0ff;
+          padding:10px 14px; border-radius:4px; margin:16px 0; }
+  .warn { background:#3a2c14; border:1px solid #6b5225; color:#f2d08c;
+          padding:10px 14px; border-radius:4px; margin:16px 0; }
+  table { border-collapse:collapse; margin:12px 0; }
+  th, td { border:1px solid #2a2f38; padding:6px 10px; text-align:left; }
+  th { background:#171a20; color:#eef1f5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ipcam-companion について</h1>
+
+  <p>
+    ipCameraViewer(マルチIPカメラビューア)の「動体検知」機能を、CORS非対応の
+    カメラでも使えるようにするための、<strong>ユーザー自身の端末上で動く</strong>
+    軽量なローカル中継アプリです。
+  </p>
+
+  <h2>これは何のためのアプリですか</h2>
+  <p>
+    動体検知は、カメラの映像をブラウザの<code>&lt;canvas&gt;</code>に描画し、
+    そのピクセルを読み取って前フレームとの差分を計算しています。ところがカメラ側が
+    <code>Access-Control-Allow-Origin</code>ヘッダーを返さない(=CORS非対応)場合、
+    ブラウザは安全のためこのピクセル読み取りを<code>SecurityError</code>でブロックします。
+    これはブラウザの正当なセキュリティ機能であり、ipCameraViewer側のバグではありません。
+  </p>
+  <p>
+    ipcam-companionは、あなたの端末上の<code>http://127.0.0.1</code>だけで待ち受ける
+    小さなHTTPサーバーです。カメラ映像を一度あなたの端末が取得し、ブラウザへは
+    正当なCORSヘッダーを付けて渡し直します。<code>https://</code>のページから
+    <code>http://127.0.0.1</code>への通信はブラウザのMixed Content制限の対象外
+    (ループバック特例)なので、これだけで動体検知が正しく動くようになります。
+  </p>
+  <div class="note">
+    このアプリはあなたの端末上でだけ動くので、「ブラウザから見えるローカルネットワークの
+    カメラを見る」というipCameraViewer本来の設計を一切変えません。Webサーバー側が
+    あなたの家のカメラに通信するわけではありません。
+  </div>
+
+  <h2>インストールと実行方法</h2>
+
+  <h3 style="color:#eef1f5;">Windows / macOS / Linux</h3>
+  <ol>
+    <li>ご自身のOSに合ったファイルをダウンロードしてください。</li>
+  </ol>
+  <table>
+    <tr><th>OS</th><th>ファイル</th></tr>
+    <tr><td>Windows (64bit)</td><td><code>ipcam-companion-windows-amd64.exe</code></td></tr>
+    <tr><td>Mac (Apple Silicon)</td><td><code>ipcam-companion-darwin-arm64</code></td></tr>
+    <tr><td>Mac (Intel)</td><td><code>ipcam-companion-darwin-amd64</code></td></tr>
+    <tr><td>Linux (64bit)</td><td><code>ipcam-companion-linux-amd64</code></td></tr>
+  </table>
+  <ol start="2">
+    <li>
+      ダウンロードしたファイルを実行してください。
+      <ul>
+        <li><strong>Windows</strong>: 「WindowsによってPCが保護されました」という警告
+          (SmartScreen)が出た場合は「詳細情報」→「実行」を選んでください。これは
+          署名付き証明書を取得していない個人配布の実行ファイルすべてに出る一般的な
+          警告です。</li>
+        <li><strong>macOS</strong>: 「開発元が未確認のため開けません」と出た場合は、
+          Finderでファイルを右クリック→「開く」を選ぶと実行を許可できます(初回のみ)。</li>
+        <li><strong>Linux</strong>: ターミナルで
+          <code>chmod +x ipcam-companion-linux-amd64</code> を実行してから
+          <code>./ipcam-companion-linux-amd64</code> で起動してください。</li>
+      </ul>
+    </li>
+    <li>
+      コンソール(黒い画面)が開き、「listening on http://127.0.0.1:...」と表示されれば
+      起動成功です。<strong>このウィンドウは動体検知を使っている間、閉じずにそのまま
+      にしてください。</strong>ipCameraViewerのページを再読み込みすると自動的に検知して
+      連携します。
+    </li>
+    <li>終了するには、そのウィンドウで <code>Ctrl+C</code> を押すか、ウィンドウを
+      閉じてください。</li>
+  </ol>
+  <p>
+    自動起動させたい場合は、OSのスタートアップ機能(Windowsのスタートアップフォルダ、
+    macOSのログイン項目、Linuxの <code>systemd --user</code> 等)にご自身で登録して
+    ください。このアプリ自体には自動起動の設定機能はありません。
+  </p>
+
+  <h3 style="color:#eef1f5;">Android (Termux経由)</h3>
+  <p>
+    AndroidにはWindows/Mac/Linuxのような「実行ファイルをそのまま起動する」仕組みが
+    無いため、<a href="https://f-droid.org/packages/com.termux/" style="color:#8fc7ff;" target="_blank" rel="noopener">Termux</a>
+    (F-Droid配布の正規のターミナル・Linux環境アプリ)を経由して実行します。
+  </p>
+  <div class="warn">
+    Google Playstoreの旧Termuxは更新が止まっており不具合が出やすいため、
+    <strong>F-Droid版のTermux</strong>を強く推奨します。
+  </div>
+  <ol>
+    <li>F-DroidからTermuxをインストールします。</li>
+    <li><code>ipcam-companion-linux-arm64</code> をダウンロードし、Termuxの
+      <code>~/downloads</code> 等の分かりやすい場所に置きます
+      (Termuxからストレージにアクセスするには初回に
+      <code>termux-setup-storage</code> の実行が必要な場合があります)。</li>
+    <li>Termuxで以下を実行します。
+<pre>chmod +x ipcam-companion-linux-arm64
+./ipcam-companion-linux-arm64</pre>
+    </li>
+    <li>
+      Androidはバックグラウンドのプロセスを積極的に停止させるため、動体検知を
+      使っている間はTermuxアプリ・セッションを前面またはバックグラウンド保持
+      (通知欄にTermuxのセッション通知が出ている状態)にしておいてください。
+      <code>termux-wake-lock</code> コマンドを併用すると安定します。
+    </li>
+  </ol>
+
+  <h2>安全性について</h2>
+  <p>
+    このアプリは起動中、ローカルのHTTPサーバーとして動作します。一般に、この種の
+    ローカルサーバーは「起動中は他のどんなWebページからも127.0.0.1のポートに
+    リクエストを送られうる」というリスクを持ちますが、ipcam-companionは以下の対策で
+    これに対処しています。
+  </p>
+  <ul>
+    <li>
+      <strong>アクセス元の厳格な制限</strong>: <code>https://toolbox.pusyuuwanko.com</code>
+      からのリクエスト以外は、Originが一致しない限りすべて拒否します
+      (<code>*</code>のようなワイルドカードでの許可は一切行いません)。
+    </li>
+    <li>
+      <strong>中継先をプライベートネットワークのみに限定</strong>:
+      <code>/relay</code>は、宛先がループバック・プライベートIP(192.168.x.x等)・
+      リンクローカルアドレスのいずれかである場合のみ中継します(DNS応答の
+      すり替えにも、接続の瞬間に毎回検証し直すことで対応しています)。
+      さらに <code>-allow-hosts</code> 起動オプションで、特定のホスト名/IPだけに
+      厳密に絞ることもできます(既定では無効=プライベートIPなら何でも許可)。
+    </li>
+    <li>
+      <strong>レート制限・同時接続数制限</strong>: <code>/relay</code>への
+      リクエスト頻度と同時接続数に上限を設け、たとえアクセス元チェックを
+      通過した相手であっても、LAN内を高速に走査する用途には使いにくくしています。
+    </li>
+    <li>
+      <strong><code>X-Content-Type-Options: nosniff</code></strong>を付与し、
+      カメラ側が想定外のレスポンスを返した場合のMIMEスニッフィングによる
+      実行リスクを抑えています。
+    </li>
+  </ul>
+  <div class="warn">
+    <strong>この対策が防げるのは「他のWebサイトが、あなたが開いているページのふりを
+    して勝手にこの中継アプリを使おうとするケース」までです。</strong>
+    あなたの端末上で既に動いているマルウェア(悪意あるプロセス)は、Originヘッダーを
+    含めて任意の内容を偽装できるため、この種のローカルサーバー固有の対策では
+    防ぎきれません。これはipcam-companionに限らず、ローカルで待ち受ける
+    あらゆるアプリに共通する一般的な限界であり、端末自体のセキュリティ対策
+    (信頼できないソフトウェアを実行しない等)で対処すべき領域です。
+  </div>
+  <p>
+    Origin一致さえすれば理論上はあなたのLAN内へ任意のプライベートIP宛の
+    リクエストを送れますが、これは<code>&lt;img src="http://192.168.x.x/..."&gt;</code>
+    のような素のHTMLタグで<strong>このアプリが無くても今日から可能な範囲</strong>を
+    実質的に超えるものではなく、このアプリの導入によって新たに生まれる攻撃面では
+    ありません。
+  </p>
+  <p>
+    また<code>169.254.0.0/16</code>(リンクローカル、クラウド環境のメタデータ
+    エンドポイントを含む)も中継対象として許可していますが、これは本アプリが
+    「個人のデスクトップ/モバイル端末上で動く」ことを前提としており、
+    クラウドVM上での実行を想定していないためです。
+  </p>
+  <p>
+    カメラがCookieベースのセッションログインを要求する場合、ipCameraViewer側の
+    JSON設定でカメラごとに <code>cookie</code> フィールドとしてCookie文字列を
+    指定すると、companionが以後のリクエストにそのCookieを付与し続けます
+    (companion内部のメモリ上にのみ保持し、ディスクへの保存やブラウザへの
+    送信は行いません。companionを終了すると破棄されます)。
+  </p>
+  <p>
+    ソースコードは <code>src/</code> ディレクトリに同梱しています(Go言語)。
+    ダウンロードした実行ファイルを信用する前に、ご自身でコードを確認したり、
+    <code>go build</code>で再ビルドしたものと比較していただいて構いません。
+  </p>
+
+  <h2>対応OS・ポート</h2>
+  <p>
+    Windows / macOS / Linux(デスクトップ)、およびAndroid(Termux経由)に対応しています。
+    iOSは対応していません(サードパーティアプリが任意のローカルサーバーを常駐実行する
+    仕組みが存在しないため)。<code>58712</code>・<code>58713</code>・<code>58714</code>
+    のいずれかの空いているポートで自動的に待ち受けます。
+  </p>
+</div>
+</body>
+</html>

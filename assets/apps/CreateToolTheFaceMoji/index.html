@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name='robots' content='noindex,nofollow'>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="copyright" content="© 2020-2024 created by PusyuuWanko/">
+    <title>顔文字作成機</title>
+    <script src="./script.js" type="text/javascript" charset="UTF-8" defer></script>
+    <link href="./style.css" rel="stylesheet">
+       <!--
+        *----------------------------------
+        |  ThisPageVersion: 2.2.2       |
+        |  © 2021-2024 By PusyuuWanko/  |
+        |  LastUpdate: 2023-11-29       |
+        |  License: MIT License         |
+        |  (^U^)KaomjiJsDesu            |
+      ----------------------------------*
+    -->
+  </head>
+  <body>
+    <main class="main">
+      <div class="main_wrapper">
+        <div class="box-6">
+          <textarea id="faceContainer">ここに顔文字が表示されます。</textarea>
+        </div>
+        <a class="sakusei" href="#modal-1"><img class="image_iconsize" width="auto" height="auto" src="./seizu_pen.png"></img></a>
+        <div id="modal-1" class="modal">
+          <div class="modal_wrapper">
+          <a href="#mc" class="modal_close"></a>
+            <div class="modal_content-wrapper">
+              <div class="modal_header">顔文字作成画面</div>
+              <div class="modal_border"></div>
+              <div class="modal_message-box" style="overflow-x: hidden; overflow-y: scroll; max-height: 45vh;">
+                <p style="border: 3px solid #ccc;">※閉じるには枠の外を押してください。</p>
+                <div style="display: flex; justify-content: center; flex-direction: column;">
+                  <label for="outline">輪郭</label>
+                  <select id="outline">
+                    <option value="()">()</option>
+                    <option value="[]">[]</option>
+                    <option value="{}">{}</option>
+                    <option value="||">||</option>
+                    <option value="<>"><></option>
+                  </select>
+                  <label for="lefthand">左手</label>
+                  <select id="lefthand">
+                    <option value="">none</option>
+                    <option value="＼">＼</option>
+                    <option value="<="><=</option>
+                    <option value="((φ">((φ</option>
+                    <option value="((o">((o</option>
+                    <option value="ヽ">ヽ</option>
+                  </select>
+                  <label for="lefteyes">左目</label>
+                  <select id="lefteyes">
+                    <option value="・">・</option>
+                    <option value="´">´</option>
+                    <option value=";`">;`</option>
+                    <option value="゜">゜</option>
+                    <option value="･">･</option>
+                    <option value="ㆁ">ㆁ</option>
+                    <option value="。･">。･</option>
+                    <option value="｡･">｡･</option>
+                    <option value="≖">≖</option>
+                    <option value="▻">▻</option>
+                    <option value="･`">･`</option>
+                    <option value="。-`">。-`</option>
+                    <option value="｀・">｀・</option>
+                    <option value="*・">*・</option>
+                    <option value="*¯ ">*¯ </option>
+                    <option value="๑•̀">๑•̀</option>
+                    <option value="´,,•">´,,•</option>
+                    <option value="⁎ᵕ">⁎ᵕ</option>
+                    <option value="⑅•">⑅•</option>
+                    <option value="˃">˃</option>
+                  </select>
+                  <label for="nose">口</label>
+                  <select id="nose">
+                    <option value="ー">ー</option>
+                    <option value="∀">∀</option>
+                    <option value="ω">ω</option>
+                    <option value="д">д</option>
+                    <option value="ㅂ">ㅂ</option>
+                    <option value="皿">皿</option>
+                    <option value="ㅅ">ㅅ</option>
+                    <option value="⌂">⌂</option>
+                    <option value="^">^</option>
+                    <option value="ᴗ">ᴗ</option>
+                  </select>
+                  <label for="righteyes">右目</label>
+                  <select id="righteyes">
+                    <option value="・">・</option>
+                    <option value="´">´</option>
+                    <option value="゜">゜</option>
+                    <option value="゜?">゜?</option>
+                    <option value="･">･</option>
+                    <option value="･｡">･｡</option>
+                    <option value="ㆁ">ㆁ</option>
+                    <option value="◅">◅</option>
+                    <option value="≖">≖</option>
+                    <option value="´-">´-</option>
+                    <option value="・´">・´</option>
+                    <option value="•́">•́</option>
+                    <option value="・*">・*</option>
+                    <option value="¯*">¯*</option>
+                    <option value="•,,｀">•,,｀</option>
+                    <option value="ᵕ⁎">ᵕ⁎</option>
+                    <option value="•⑅">•⑅</option>
+                    <option value="˂">˂</option>
+                  </select>
+                  <label for="righthand">右手</label>
+                  <select id="righthand">
+                    <option value="">none</option>
+                    <option value="／">／</option>
+                    <option value="つ">つ</option>
+                    <option value="=>">=></option>
+                    <option value="o))">o))</option>
+                    <option value="ノ">ノ</option>
+                  </select>
+                  <label for="space">手前のスペースを入れる・入れない</label>
+                  <input id="space" type="checkbox" />
+                  <label for="comment">コメント</label>
+                  <input type="text" id="comment" placeholder="絵文字やコメントを入力" />
+                  <button style="margin: 10px 0px 10px;" id="createButton">作成</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

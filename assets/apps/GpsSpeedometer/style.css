@@ -1,0 +1,144 @@
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 1.0.0      |
+  |  © 2026 By PusyuuWanko/       |
+  |  License: MIT License         |
+  |  PusyuuGpsSpeedometer         |
+----------------------------------*
+******************************************/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#speedo-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+#speedo-status {
+  color: #0f0;
+  text-align: center;
+}
+
+#gauge {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: conic-gradient(#0aff0a 0deg, #0aff0a 0deg, rgba(255,255,255,0.08) 0deg, rgba(255,255,255,0.08) 360deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s linear;
+}
+
+#gauge-fill {
+  display: none;
+}
+
+#gauge-inner {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#speed-value {
+  font-size: 48px;
+  color: #80ff00;
+  font-weight: bold;
+}
+
+#speed-unit {
+  font-size: 16px;
+  color: #ccc;
+}
+
+#stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.stat {
+  background: linear-gradient(to bottom right, rgba(0,255,255,0.2), rgba(0,0,255,0.15));
+  border-radius: 15px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 40%;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.stat-value {
+  font-size: 18px;
+  color: #fff;
+}
+
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 15px;
+}
+
+#controls button {
+  background-color: rgba(10, 255, 10, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#controls button:active {
+  background-color: rgba(10, 200, 10, 0.9);
+}
+
+@media only screen and (max-width: 660px) {
+  #gauge {
+    width: 200px;
+    height: 200px;
+  }
+  #gauge-inner {
+    width: 160px;
+    height: 160px;
+  }
+  #speed-value {
+    font-size: 36px;
+  }
+}

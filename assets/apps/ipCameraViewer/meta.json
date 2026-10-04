@@ -1,0 +1,7 @@
+{
+    "title": "マルチIPカメラビューア",
+    "description": "このアプリでは複数のカメラを一括で閲覧できます、少しマニアックな設定方法になってるためAIや詳しい方に相談しながら使うことをお勧めします",
+    "image": "./assets/images/img-1.png",
+    "pinned": false,
+    "legacyCompatible": true
+}

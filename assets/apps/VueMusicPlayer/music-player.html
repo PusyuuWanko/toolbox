@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name='robots' content='noindex,nofollow'>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <script src="./vue.min.js"></script>
+  <script src="./vue-aplayer.min.js"></script>
+  <!-- ツールボックスの保存の窓口。ツールボックスの中で開けば親の窓口を使います -->
+  <script src="../../scripts/storage-hub.js"></script>
+  <title>音楽プレイヤー</title>
+  <style>
+    /* この曲追加ボタン・モーダルはVueでのみ制御しています。このページ自体
+       Vue無しでは何も表示されない(#appの中身はVueが描画するテンプレート)ため、
+       JS前提でのUIで問題ありません。 */
+    .add-music-button {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(10, 160, 255, 0.85);
+      color: #fff;
+      font-size: 30px;
+      line-height: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      z-index: 500;
+    }
+    .add-music-button:active {
+      background-color: rgba(10, 120, 200, 0.9);
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 600;
+    }
+    .modal-box {
+      position: relative;
+      width: min(90vw, 400px);
+      max-height: 85vh;
+      overflow: auto;
+      background-color: #222;
+      color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+    .modal-box h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .add-type-toggle {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+    .modal-box label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .add-type-toggle label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 0;
+    }
+    .modal-box input[type="text"],
+    .modal-box input[type="file"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      background-color: #111;
+      color: #fff;
+    }
+    .add-error {
+      color: #ff6060;
+      font-size: 13px;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .modal-actions button {
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    .modal-actions button:first-child {
+      background-color: rgba(10, 200, 10, 0.8);
+      color: #fff;
+    }
+    .modal-actions button:last-child {
+      background-color: #444;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <main class="main">
+    <div id="app">
+      <aplayer :music="music" :list="list"></aplayer>
+
+      <button type="button" class="add-music-button" @click="openAddModal" aria-label="音楽を追加">＋</button>
+
+      <div class="modal-overlay" v-if="showAddModal" @click.self="closeAddModal">
+        <div class="modal-box">
+          <button type="button" class="modal-close" @click="closeAddModal">✕</button>
+          <h2>音楽を追加</h2>
+
+          <div class="add-type-toggle">
+            <label><input type="radio" value="url" v-model="newSongType"> ストリーミングURL</label>
+            <label><input type="radio" value="file" v-model="newSongType"> 端末内のファイル</label>
+          </div>
+
+          <label v-if="newSongType === 'url'">
+            URL
+            <input type="text" v-model="newSongUrl" placeholder="https://example.com/stream.mp3">
+          </label>
+          <label v-else>
+            ファイルを選択
+            <input type="file" accept="audio/*" @change="onFileSelected">
+          </label>
+
+          <label>
+            タイトル（任意）
+            <input type="text" v-model="newSongTitle" placeholder="タイトル">
+          </label>
+          <label>
+            アーティスト（任意）
+            <input type="text" v-model="newSongArtist" placeholder="不明">
+          </label>
+
+          <p class="add-error" v-if="addError">{{ addError }}</p>
+
+          <div class="modal-actions">
+            <button type="button" @click="addSong">追加</button>
+            <button type="button" @click="closeAddModal">キャンセル</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./music-list.vue"></script>
+  </main>
+</body>
+</html>

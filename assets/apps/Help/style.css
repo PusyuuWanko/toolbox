@@ -1,0 +1,18 @@
+body {
+  background-color: rgba(100,100,100,0.8);
+}
+body > div {
+  padding: 10px;
+}
+a {
+  color: #fff000;
+}
+a:hover {
+  text-decoration: none;
+}
+div span {
+  margin-right: 10px;
+}
+div span::before {
+  content: "：";
+}

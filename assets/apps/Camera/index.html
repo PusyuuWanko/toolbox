@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=6.0, minimum-scale=1.0">
+    <meta name="copyright" content="© 2020-2026 created by PusyuuWanko/">
+    <meta name='robots' content='noindex,nofollow'>
+    <title>プシューカメラ</title>
+    <link href="./style.css" rel="stylesheet">
+    <script src="./script.js" defer></script>
+    <!--
+        *----------------------------------
+        |  ThisPageVersion: 1.0.0       |
+        |  © 2026 By PusyuuWanko/       |
+        |  License: MIT License         |
+        |  PusyuuCamera                 |
+      ----------------------------------*
+    -->
+  </head>
+  <body>
+    <div id="camera-container">
+      <p id="camera-status">カメラへのアクセスを準備しています...</p>
+      <p id="rec-indicator" style="display:none;">⚫ REC <span id="rec-timer">00:00</span></p>
+      <video id="preview" playsinline autoplay muted></video>
+      <canvas id="capture-canvas"></canvas>
+      <img id="snapshot" alt="撮影した写真">
+      <video id="recorded-playback" playsinline controls></video>
+    </div>
+    <div id="controls">
+      <label id="mirror-label"><input id="mirror-toggle" type="checkbox" checked> 🪞 ミラー反転</label>
+      <button id="switch-btn" type="button" style="display:none;">🔄 切替</button>
+      <button id="shutter-btn" type="button">📸 撮影</button>
+      <button id="record-btn" type="button">🎥 動画</button>
+      <button id="retake-btn" type="button" style="display:none;">↩️ 撮り直す</button>
+      <a id="download-link" style="display:none;" download="photo.png">💾 保存</a>
+      <a id="video-download-link" style="display:none;" download="video.webm">💾 動画を保存</a>
+    </div>
+  </body>
+</html>

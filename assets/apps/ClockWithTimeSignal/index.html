@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2020-2024 created by PusyuuWanko/">
+    <title>時報、カレンダー付き、時刻表示アプリ</title>
+    <!-- ツールボックスの保存の窓口。script.js より先に読み込むこと(無い場所では script.js が localStorage に倒れます) -->
+    <script src="../../scripts/storage-hub.js"></script>
+    <script src="./script.js?v=6"></script>
+    <link href="./style.css?v=5" rel="stylesheet">
+    <!--
+        *----------------------------------
+        |  ThisPageVersion: 1.13.5      |
+        |  © 2021-2026 By PusyuuWanko/  |
+        |  LastUpdate: 2026-09-03       |
+        |  License: MIT License         |
+        |  ClockWithTimeSignal          |
+      ----------------------------------*
+    -->
+  </head>
+  <body>
+    <main>
+      <div class="center">
+        <article class="article">
+          <div id="calendar"><p style="color: #ff0000; font-size: 50px;">JavaScriptが有効になっていないようです。</p></div>
+        </article>
+      </div>
+    </main>
+    <a href="#settings" class="settings_button">
+      <img src="./settings.png" width="35px" height="35px" alt="settings icon" oncontextmenu="return false;" onselectstart="return false;" onmousedown="return false;">
+    </a>
+    <div class="modal" id="settings">
+      <div class="modal_wrapper">
+        <a class="modal_close" href="#mc"></a>
+        <div class="modal_content-wrapper">
+          <div class="modal_header">setting display</div>
+          <div class="modal_border"></div>
+          <div class="modal_message-box">
+            <h4>設定変更はこちらからできます</h4>
+            <p>※ブラウザキャッシュを削除すると戻ってしまうのでご注意ください。</p>
+            <h5>あなたの好きな画像を壁紙を追加↓</h5>
+            <input type="file" id="upload-input">
+            <h5>壁紙を選択↓</h5>
+            <select id="background-select">
+            </select>
+            <h4>チャイム機能</h4>
+            <div id="chime-toggle"></div>
+            <h5>チャイムの音量</h5>
+            <div id="chime-volume-radio" class="chime-volume-radio">
+              <label><input type="radio" name="chime-volume" value="large"> 大</label>
+              <label><input type="radio" name="chime-volume" value="medium"> 中</label>
+              <label><input type="radio" name="chime-volume" value="small"> 小</label>
+            </div>
+            <h5>チャイム音の追加</h5>
+            <input type="file" id="upload-chime">
+            <button type="button" id="chime-manage-toggle-btn">チャイムの管理</button>
+            <div id="chime-manage-panel" style="display:none;">
+              <div id="chime-manage-list" class="alarm-list"></div>
+            </div>
+            <h5>00分のチャイムを選択</h5>
+            <select id="chime00-select">
+            </select>
+            <h5>30分のチャイムを選択</h5>
+            <select id="chime30-select">
+            </select>
+            <h5>好きな分・秒にもチャイムを追加（00分00秒・30分00秒以外）</h5>
+            <div id="chime-minute-list" class="alarm-list"></div>
+            <div class="alarm-add-form">
+              <input type="number" id="chime-minute-input" placeholder="分（0～59）" min="0" max="59">
+              <input type="number" id="chime-minute-second-input" placeholder="秒（省略時0）" min="0" max="59">
+              <select id="chime-minute-chime-select"></select>
+              <button type="button" id="chime-minute-add-btn">＋ 追加</button>
+            </div>
+            <h5>アラーム</h5>
+            <div id="alarm-list" class="alarm-list"></div>
+            <div class="alarm-add-form">
+              <input type="time" id="alarm-time-input" placeholder="07:30">
+              <input type="text" id="alarm-label-input" placeholder="ラベル（任意）">
+              <select id="alarm-chime-select"></select>
+              <button type="button" id="alarm-add-btn">アラーム追加</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="dayEventModal">
+      <div class="modal_wrapper">
+        <a class="modal_close" href="#mc"></a>
+        <div class="modal_content-wrapper">
+          <div class="modal_header">予定編集</div>
+          <div class="modal_border"></div>
+          <div class="modal_message-box">
+            <h4 id="dayEventDateLabel"></h4>
+            <textarea id="dayEventText" rows="6" style="width: 100%;"></textarea>
+            <div class="day-event-buttons">
+              <button type="button" id="dayEventSaveBtn">保存</button>
+              <button type="button" id="dayEventDeleteBtn">削除</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="alarm-banner" style="display:none;">
+      <span id="alarm-banner-label"></span>
+      <button type="button" id="alarm-banner-dismiss">停止</button>
+    </div>
+
+    <div id="event-banner" style="display:none;">
+      <span id="event-banner-label"></span>
+      <button type="button" id="event-banner-dismiss">閉じる</button>
+    </div>
+  </body>
+</html>

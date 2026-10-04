@@ -1,0 +1,7 @@
+{
+  "title": "オセロゲーム",
+  "description": "オセロ大戦ができます。少々デザイン変更しました。",
+  "image": "./assets/images/img-4.png",
+  "entry": "osero.html",
+  "legacyCompatible": false
+}

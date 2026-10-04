@@ -1,0 +1,158 @@
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 2.2.3      |
+  |  © 2021-2024 By PusyuuWanko/  |
+  |  LastUpdate: 2024-02-17       |
+  |  License: MIT License         |
+  |  PusyuuTenki                  |
+----------------------------------*
+******************************************/
+
+body {
+  background-color: #000;
+  color: #FFF;
+}
+
+#today-hour-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+#today-hour-nav p {
+  margin: 0;
+}
+
+#today-hour-nav button {
+  background-color: rgba(10, 255, 10, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#today-hour-nav button:disabled {
+  background-color: rgba(150, 150, 150, 0.4);
+  color: #ccc;
+  cursor: default;
+}
+
+.weekly {
+  background: linear-gradient(to bottom right, rgba(0,255,255,0.5), rgba(0,0,255,0.3));
+  border-radius: 30px;
+  padding: 20px;
+  width: 20vw;
+  cursor: pointer;
+}
+
+.weekly:active {
+  background: linear-gradient(to bottom right, rgba(0,255,255,0.7), rgba(0,0,255,0.5));
+}
+
+#hourly-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+#hourly-modal-box {
+  position: relative;
+  background: linear-gradient(to bottom right, rgba(0,60,60,0.95), rgba(0,0,60,0.95));
+  border-radius: 20px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+}
+
+#hourly-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#hourly-modal-date {
+  margin: 0 0 10px;
+  padding-right: 30px;
+}
+
+#hourly-modal-body p {
+  margin: 6px 0;
+}
+
+#hourly-modal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+#hourly-modal-nav button {
+  background-color: rgba(10, 255, 10, 0.7);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#hourly-modal-nav button:disabled {
+  background-color: rgba(150, 150, 150, 0.4);
+  color: #ccc;
+  cursor: default;
+}
+
+#hourly-modal-hourlabel {
+  font-size: 16px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+#reload {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(10, 255, 10, 0.7);
+  border-radius: 50px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.image_iconsize {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width:660px){
+  .weekly {
+    width: 100%;
+  }
+}

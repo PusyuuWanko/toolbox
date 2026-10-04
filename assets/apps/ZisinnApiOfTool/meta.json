@@ -1,0 +1,6 @@
+{
+  "title": "地震速報",
+  "description": "ここでは、地震速報とランダムなわんこの画像表示できます。",
+  "image": "./assets/images/img-25.png",
+  "legacyCompatible": false
+}

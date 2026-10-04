@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name='robots' content='noindex,nofollow'>
+    <meta content="width=device-width initial-scale=1.0 minimum-scale=1.0 maximum-scale=1.0 user-scalable=no" name="viewport">
+    <meta name="copyright" content="© 2020-2024 created by PusyuuWanko/">
+    <title>Periodic Table</title>
+    <link href="./style.css" rel="stylesheet">
+    <!--
+       *----------------------------------
+       |  ThisPageVersion: 1.4.0       |
+       |  © 2021-2024 By PusyuuWanko/  |
+       |  LastUpdate: 2023-11-05       |
+       |  License: MIT License         |
+       |  PeriodicTable                |
+     ----------------------------------*
+    -->
+  </head>
+  <body>
+    <!-- ツールボックスの保存の窓口。script.js より先に読み込むこと(無い場所では script.js が localStorage に倒れます) -->
+    <script src="../../scripts/storage-hub.js"></script>
+    <script src="./script.js"></script>
+    <a href="#settings" class="settings_button"><img src="./settings.png" width="35px" height="35px" alt="settings icon" oncontextmenu="return false;" onselectstart="return false;" onmousedown="return false;"></a>
+    <div class="modal" id="settings">
+      <div class="modal_wrapper">
+        <a class="modal_close" href="#mc"></a>
+        <div class="modal_content-wrapper">
+          <div class="modal_header">setting display</div>
+          <div class="modal_border"></div>
+          <div class="modal_message-box">
+            <h4>壁紙変更はこちらからできます</h4>
+            <p>※ブラウザキャッシュを削除すると戻ってしまうのでご注意ください。</p>
+            <h5>あなたの好きな画像を壁紙を追加↓<h5>
+            <input type="file" id="upload-input">
+            <h5>壁紙を選択↓</h5>
+            <select id="background-select">
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
